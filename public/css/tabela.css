@@ -1,0 +1,247 @@
+/* === tabela.css — estilos específicos para a página de reservas === */
+
+/* === Reset e base === */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Layout principal === */
+main {
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+  background-color: #f5f7fa;
+}
+
+/* === Container central === */
+main > .container {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 1100px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* === Título === */
+main > .container h1 {
+  color: #002E87;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* === Botões principais === */
+main > .container .btn-nova,
+main > .container .btn-visualizar {
+  display: inline-block;
+  background-color: #002E87;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  margin: 0 5px 25px 5px;
+}
+
+main > .container .btn-nova:hover,
+main > .container .btn-visualizar:hover {
+  background-color: #003fcc;
+  transform: scale(1.02);
+}
+
+/* === Tabela === */
+main > .container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+/* Cabeçalho */
+main > .container th {
+  background-color: #002E87;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  padding: 12px 16px;
+  text-align: left;
+  border: none;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* Corpo */
+main > .container td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+/* Linhas alternadas e hover */
+main > .container tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+main > .container tbody tr:hover {
+  background-color: #f1f5ff;
+  transition: 0.2s;
+}
+
+/* === Mensagem quando não há reservas === */
+main > .container .sem-reserva {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  margin-top: 20px;
+}
+
+/* === DataTables — personalização === */
+.dataTables_wrapper {
+  margin-top: 10px;
+}
+
+.dataTables_wrapper select,
+.dataTables_wrapper input {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  margin: 5px;
+  outline: none;
+}
+
+.dataTables_wrapper label {
+  font-weight: 500;
+  color: #333;
+}
+
+/* === Filtros no cabeçalho === */
+.dataTable thead select {
+  background: white;
+  color: #333;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+.dataTable thead select:hover {
+  border-color: #002E87;
+}
+
+/* === Paginação === */
+.dataTables_paginate {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.dataTables_paginate .paginate_button {
+  background-color: #fff;
+  border: 1px solid #002E87;
+  color: #002E87 !important;
+  border-radius: 5px;
+  padding: 6px 10px;
+  margin: 0 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dataTables_paginate .paginate_button:hover {
+  background-color: #002E87;
+  color: white !important;
+}
+
+.dataTables_paginate .paginate_button.current {
+  background-color: #002E87;
+  color: white !important;
+  border: 1px solid #002E87;
+}
+
+/* === Mensagem de sucesso === */
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+}
+
+/* === Responsividade === */
+@media (max-width: 768px) {
+  main > .container {
+    padding: 20px;
+    width: 95%;
+  }
+
+  main > .container table {
+    font-size: 14px;
+  }
+
+  main > .container th,
+  main > .container td {
+    padding: 10px;
+  }
+
+  main > .container .btn-nova,
+  main > .container .btn-visualizar {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+/* === Correção de overflow da tabela e do DataTables === */
+main > .container {
+  overflow: hidden; /* evita vazamento de bordas da tabela */
+}
+
+/* Força o DataTables a respeitar o container */
+main > .container .dataTables_wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
+/* Mantém o border-radius no topo da tabela */
+main > .container table.dataTable {
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 !important;
+}
+
+/* Corrige o cabeçalho azul para não vazar nas laterais */
+main > .container table.dataTable thead {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  overflow: hidden;
+}
+
+/* Faz com que o bloco de filtros e paginação fique dentro do container */
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+  padding: 10px 0;
+}
+
+/* Centraliza os controles de paginação no layout */
+.dataTables_wrapper .dataTables_paginate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}

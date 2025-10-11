@@ -1,0 +1,98 @@
+/* --- Formulário de Nova Reserva (estilo moderno) --- */
+.form-reserva {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-reserva h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #003087;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .form-reserva p {
+    font-size: 14px;
+    color: #555555;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .form-reserva label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #333333;
+  }
+  
+  .form-reserva input,
+  .form-reserva select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+  }
+  
+  .form-reserva input:focus,
+  .form-reserva select:focus {
+    border-color: #003087;
+    box-shadow: 0 0 5px rgba(0, 48, 135, 0.3);
+  }
+  
+  .form-reserva button {
+    width: 100%;
+    padding: 14px;
+    background-color: #003087;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .form-reserva button:hover {
+    background-color: #001f5b;
+  }
+  
+  /* --- Responsivo da reserva --- */
+  @media (max-width: 900px) {
+    .form-reserva {
+      margin: 20px;
+      padding: 20px;
+    }
+  }
+
+  .btn-primario {
+    width: 100%;
+    padding: 14px;
+    background-color: #003087;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .btn-primario:hover {
+    background-color: #001f5b;
+  }
+  
+  .botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* espaçamento entre os botões */
+  }
+  
