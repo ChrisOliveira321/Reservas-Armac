@@ -78,14 +78,40 @@ class ReservaController extends Controller {
     }
 
     public function edit(Reserva $reserva) {
-        //
+        
+        $colaboradores = Colaborador::all();
+        $hoteis = Hotel::all();
+        $cidades = Cidade::all();
+        return view('reservas.edit', compact('reserva', 'colaboradores', 'hoteis', 'cidades'));
     }
 
     public function update(Request $request, Reserva $reserva) {
-        //
+        $request->validate([
+            'colaborador' => 'required|string|max:100',
+            'hotel' => 'required|string|max:100',
+            'cidade' => 'required|string|max:100',
+            'checkin' => 'required|date',
+            'checkout' => 'required|date|after_or_equal:checkin',
+        ]);
+
+        $colaborador = Colaborador::firstOrCreate(['nome' => $request->colaborador]);
+        $cidade = Cidade::firstOrCreate(['nome' => $request->cidade]);
+        $hotel = Hotel::firstOrCreate(['nome' => $request->hotel]);
+
+        $reserva->update([
+            'colaborador' => $colaborador->nome,
+            'hotel' => $hotel->nome,
+            'cidade' => $cidade->nome,
+            'checkin' => $request->checkin,
+            'checkout' => $request->checkout,
+        ]);
+
+        return redirect()->route('reservas.index')
+                      ->with('success', 'Reserva atualizada com sucesso!');
     }
 
+
     public function destroy(Reserva $reserva) {
-        //
+        
     }
 }
