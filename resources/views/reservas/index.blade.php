@@ -8,11 +8,14 @@
 
     <div class="botoes-topo">
         <a href="{{ route('reservas.create') }}" class="btn-primario" id="btn-cadastrar">Cadastrar nova reserva</a>
-        <button type="button" class="btn-primario" id="btn-atualizar">Atualizar reserva</button>
+        <button type="button" class="btn-primario" id="btn-editar-modo">Editar reserva</button>
+        <button type="button" class="btn-primario" id="btn-deletar-modo">Deletar reserva</button>
+
+        <!-- Botões que aparecem dinamicamente -->
         <button type="button" class="btn-primario hidden" id="btn-editar">Editar selecionada</button>
+        <button type="button" class="btn-perigo hidden" id="btn-confirmar-delete">Confirmar exclusão</button>
         <button type="button" class="btn-secundario hidden" id="btn-cancelar">Cancelar</button>
     </div>
-
 
     <form id="form-selecao">
         <table class="tabela-reservas">
@@ -44,42 +47,74 @@
             </tbody>
         </table>
     </form>
+
+    <!-- Formulário oculto para deletar -->
+    <form id="form-delete" method="POST" style="display: none;">
+        @csrf
+        @method('DELETE')
+    </form>
 </div>
 
 <script>
-    const btnAtualizar = document.getElementById('btn-atualizar');
+    const btnEditarModo = document.getElementById('btn-editar-modo');
+    const btnDeletarModo = document.getElementById('btn-deletar-modo');
     const btnCadastrar = document.getElementById('btn-cadastrar');
     const btnCancelar = document.getElementById('btn-cancelar');
     const btnEditar = document.getElementById('btn-editar');
+    const btnConfirmarDelete = document.getElementById('btn-confirmar-delete');
     const colunasSelecao = document.querySelectorAll('.col-selecao');
 
-    btnAtualizar.addEventListener('click', () => {
+    function ativarSelecao(tipo) {
         colunasSelecao.forEach(c => c.classList.remove('hidden'));
-        btnEditar.classList.remove('hidden');
         btnCancelar.classList.remove('hidden');
-        btnAtualizar.classList.add('hidden');
         btnCadastrar.classList.add('hidden');
-    });
+        btnEditarModo.classList.add('hidden');
+        btnDeletarModo.classList.add('hidden');
 
-    btnCancelar.addEventListener('click', () => {
+        if (tipo === 'editar') {
+            btnEditar.classList.remove('hidden');
+        } else if (tipo === 'delete') {
+            btnConfirmarDelete.classList.remove('hidden');
+        }
+    }
+
+    function cancelarSelecao() {
         colunasSelecao.forEach(c => c.classList.add('hidden'));
         btnEditar.classList.add('hidden');
+        btnConfirmarDelete.classList.add('hidden');
         btnCancelar.classList.add('hidden');
-        btnAtualizar.classList.remove('hidden');
+        btnEditarModo.classList.remove('hidden');
+        btnDeletarModo.classList.remove('hidden');
         btnCadastrar.classList.remove('hidden');
         document.querySelectorAll('input[name="reserva_id"]').forEach(r => r.checked = false);
-    });
+    }
 
-    // Clique em EDITAR: redireciona para /reservas/{id}/edit
+    btnEditarModo.addEventListener('click', () => ativarSelecao('editar'));
+    btnDeletarModo.addEventListener('click', () => ativarSelecao('delete'));
+    btnCancelar.addEventListener('click', cancelarSelecao);
+
     btnEditar.addEventListener('click', () => {
         const selecionado = document.querySelector('input[name="reserva_id"]:checked');
         if (!selecionado) {
-        alert('Selecione uma reserva para editar.');
-        return;
+            alert('Selecione uma reserva para editar.');
+            return;
         }
         const id = selecionado.value;
-        // redireciona para rota de edição padrão do Laravel
         window.location.href = `/reservas/${id}/edit`;
+    });
+
+    btnConfirmarDelete.addEventListener('click', () => {
+        const selecionado = document.querySelector('input[name="reserva_id"]:checked');
+        if (!selecionado) {
+            alert('Selecione uma reserva para excluir.');
+            return;
+        }
+        const id = selecionado.value;
+        if (confirm('Tem certeza que deseja excluir esta reserva?')) {
+            const formDelete = document.getElementById('form-delete');
+            formDelete.action = `/reservas/${id}`;
+            formDelete.submit();
+        }
     });
 </script>
 

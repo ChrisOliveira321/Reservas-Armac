@@ -33,11 +33,12 @@ body {
 
 /* === Área dos botões do topo === */
 .botoes-topo {
-  display: flex;               /* ativa flexbox */
-  justify-content: center;     /* centraliza horizontalmente */
-  align-items: center;         /* alinha verticalmente */
-  gap: 15px;                   /* espaço entre os botões */
-  flex-wrap: nowrap;           /* impede quebra de linha */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: nowrap;
+  margin-bottom: 15px;
 }
 
 .botoes-topo a,
@@ -45,17 +46,17 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 200px;               /* 🔹 largura fixa igual para todos */
-  height: 45px;               /* 🔹 ligeiramente mais alto */
+  width: 200px;
+  height: 45px;
   background-color: #0d47a1;
   color: #fff;
   font-weight: 600;
-  font-size: 15px;            /* 🔹 fonte um pouco maior */
+  font-size: 15px;
   text-decoration: none;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  white-space: nowrap;        /* 🔹 impede quebra de linha no texto */
+  white-space: nowrap;
   flex-shrink: 0;
   transition: all 0.3s ease;
 }
@@ -66,27 +67,29 @@ body {
   transform: scale(1.05);
 }
 
+/* === Variações de botões === */
 
-
-.botoes-topo a:hover,
-.botoes-topo button:hover {
-  background-color: #1565c0;
-  transform: scale(1.05);
-}
-
+/* Botão secundário (Cancelar) */
 .btn-secundario {
-  background-color: #777;
+  background-color: #9e9e9e;
 }
 
 .btn-secundario:hover {
-  background-color: #555;
+  background-color: #757575;
   transform: scale(1.03);
 }
 
-.hidden {
-  display: none !important;
+/* Botão de exclusão (Deletar reserva) */
+.btn-perigo {
+  background-color: #808080;
 }
 
+.btn-perigo:hover {
+  background-color: #616161;
+  transform: scale(1.05);
+}
+
+/* === Ocultar elementos === */
 .hidden {
   display: none !important;
 }
@@ -96,11 +99,11 @@ table {
   width: 100%;
   margin-top: 15px;
   font-size: 15px;
-  border-collapse: separate;   /* importante: permite aplicar border-radius */
-  border-spacing: 0;           /* remove o espaço entre as células */
-  border-radius: 10px;         /* 🔹 arredonda os cantos */
-  overflow: hidden;   
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);  
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 }
 
 thead {
@@ -128,7 +131,7 @@ tbody td {
   text-align: center;
 }
 
-/* === Coluna de seleção (checkbox) === */
+/* === Coluna de seleção (radio button) === */
 .col-selecao {
   width: 50px;
 }
@@ -159,8 +162,8 @@ tbody td {
     font-size: 13px;
   }
 
-  .btn-primario,
-  .btn-secundario {
+  .botoes-topo a,
+  .botoes-topo button {
     min-width: 180px;
     height: 42px;
     font-size: 14px;
