@@ -94,5 +94,32 @@
     display: flex;
     flex-direction: column;
     gap: 10px; /* espaçamento entre os botões */
-  }
-  
+}
+
+/* área do checkbox e texto */
+.checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* mantém alinhado à esquerda */
+    gap: 8px; /* espaçamento entre o checkbox e o texto */
+    margin: 12px 0 0 2px; /* leve ajuste de posição */
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+/* estiliza o checkbox */
+.checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #002c91; /* azul igual ao botão */
+    cursor: pointer;
+    transform: translateY(-1px); /* alinha verticalmente com o texto */
+}
+
+/* estiliza o texto do label */
+.checkbox label {
+    margin: 0;
+    cursor: pointer;
+    user-select: none;
+}
