@@ -69,8 +69,7 @@ class ReservaController extends Controller {
             'checkout' => $request->checkout,
         ]);
 
-        return redirect('reservas/create')->with('success', 'Reserva cadastrada com sucesso!');
-
+        return back()->with('success', 'Reserva cadastrada com sucesso!');
     }
 
     public function show(Reserva $reserva) {
