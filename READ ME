@@ -1,0 +1,27 @@
+# Reservas Armac
+
+Um sistema de gerenciamento de reservas de hotéis desenvolvido em **PHP / Laravel**, ideal para controlar hospedagens, clientes e colaboradores de forma prática e organizada.
+
+## Funcionalidades
+
+- Login e autenticação de usuários com diferentes **roles**:
+  - Administrador: CRUD completo de usuários(Implementação futura) e reservas.
+  - Coordenador: CRUD apenas de reservas.
+- Cadastro e gerenciamento de hotéis.
+- Cadastro e gerenciamento de reservas.
+- Visualização de reservas por cidade, hotel e colaborador.
+- Edição e exclusão de reservas individuais ou múltiplas.
+- Interface amigável.
+
+## Tecnologias Utilizadas
+
+- **Backend:** PHP 8 + Laravel 10
+- **Banco de dados:** MySQL
+- **Frontend:** Blade Templates, HTML, CSS e JS
+- **Controle de versão:** Git & GitHub
+
+## Instalação
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/ChrisOliveira321/Reservas-Armac.git
